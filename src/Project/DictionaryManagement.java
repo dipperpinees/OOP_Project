@@ -1,5 +1,9 @@
 package Project;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -15,6 +19,8 @@ public class DictionaryManagement {
 
     public void insertFromCommandline() {
         Scanner scan = new Scanner(System.in);
+        FileWriter fw = null;
+        BufferedWriter bw = null;
         System.out.print("Nhap so luong tu muon them : ");
         int num = Integer.parseInt(scan.next());
         String target;
@@ -27,6 +33,17 @@ public class DictionaryManagement {
             expain = scan.nextLine();
             Word word = new Word(target,expain);
             dictionary.getWordsList().add(word);
+            String s = target + '\t' + expain;
+            try {
+                fw = new FileWriter("dictionaries.txt", true);
+                bw = new BufferedWriter(fw);
+                bw.write(s);
+                bw.newLine();
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+
+            }
         }
     }
 
@@ -79,5 +96,28 @@ public class DictionaryManagement {
         if (!check) {
             System.out.println("Khong tim thay tu can xoa!");
         }
+    }
+
+    public void insertFromFile() {
+        File file = new File("dictionaries.txt");
+        Scanner scan = null;
+        try {
+            scan = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String str;
+        String eng;
+        String vie;
+        int numOfTab;
+        while (scan.hasNext()) {
+            str = scan.nextLine();
+            numOfTab = str.indexOf('\t');
+            eng = str.substring(0,numOfTab);
+            vie = str.substring(numOfTab + 1);
+            Word word = new Word(eng,vie);
+            dictionary.getWordsList().add(word);
+        }
+
     }
 }

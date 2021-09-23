@@ -1,5 +1,6 @@
 package Project;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class DictionaryCommandline {
@@ -23,6 +24,12 @@ public class DictionaryCommandline {
 
     public void dictionaryBasic() {
         dictionaryManagement.insertFromCommandline();
+        showAllWords();
+        dictionaryManagement.dictionaryLookup();
+    }
+
+    public void dictionaryAdvanced() {
+        dictionaryManagement.insertFromFile();
         showAllWords();
         dictionaryManagement.dictionaryLookup();
     }

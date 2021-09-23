@@ -1,0 +1,6 @@
+hello	xin chao
+fire	lua
+good bye	tam biet
+love	yeu
+hate	ghet
+haha	haha
