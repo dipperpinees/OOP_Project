@@ -59,6 +59,7 @@ public class DictionaryCommandline {
             System.out.println("6 : Tim kiem tu");
             System.out.println("7 : Xuat du lieu ra file");
             System.out.println("8 : Thoat\n");
+
             num = scan.nextInt();
             if (num == 1) {
                 dictionaryManagement.insertFromCommandline();

@@ -9,6 +9,6 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         DictionaryCommandline Dic = new DictionaryCommandline();
         Dic.play();
-
+   
     }
 }
