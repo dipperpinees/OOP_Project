@@ -35,7 +35,7 @@ public class DictionaryManagement {
             dictionary.getWordsList().add(word);
             String s = target + '\t' + expain;
             try {
-                fw = new FileWriter("dictionaries.txt", true);
+                fw = new FileWriter("\\OOP_Project\\src\\dictionaries.txt", true);
                 bw = new BufferedWriter(fw);
                 bw.write(s);
                 bw.newLine();
@@ -99,7 +99,7 @@ public class DictionaryManagement {
     }
 
     public void insertFromFile() {
-        File file = new File("dictionaries.txt");
+        File file = new File("\\OOP_Project\\src\\dictionaries.txt");
         Scanner scan = null;
         try {
             scan = new Scanner(file);
