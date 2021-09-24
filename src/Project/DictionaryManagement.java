@@ -1,5 +1,6 @@
 package Project;
 
+import java.io.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,7 +36,7 @@ public class DictionaryManagement {
             dictionary.getWordsList().add(word);
             String s = target + '\t' + expain;
             try {
-                fw = new FileWriter("\\OOP_Project\\src\\dictionaries.txt", true);
+                fw = new FileWriter("src/dictionaries.txt", true);
                 bw = new BufferedWriter(fw);
                 bw.write(s);
                 bw.newLine();
@@ -99,7 +100,7 @@ public class DictionaryManagement {
     }
 
     public void insertFromFile() {
-        File file = new File("\\OOP_Project\\src\\dictionaries.txt");
+        File file = new File("src/dictionaries.txt");
         Scanner scan = null;
         try {
             scan = new Scanner(file);
@@ -119,5 +120,35 @@ public class DictionaryManagement {
             dictionary.getWordsList().add(word);
         }
 
+    }
+
+    public void changeWordFromCommandLine () {
+        System.out.println("Nhap tu ban muon sua nghia:");
+        Scanner scan = new Scanner(System.in);
+        String target = scan.nextLine();
+        System.out.println("Nhap nghia cua tu ban muon sua:");
+        String explain = scan.nextLine();
+        boolean check = false;
+        for(int i = 0; i < dictionary.getWordsList().size(); i++) {
+            if( dictionary.getWordsList().get(i).getWordTarget().equals(target)) {
+               check = true;
+               dictionary.getWordsList().get(i).setWordExplain(explain);
+            }
+        }
+        if(!check) {
+            System.out.println("Tu cua ban chua co trong tu dien");
+        }
+    }
+
+    public void dictionaryExportToFile () throws IOException {
+        File file = new File("src/dictionaries.txt");
+        OutputStream outputStream = new FileOutputStream(file);
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
+        for(int i = 0; i < dictionary.getWordsList().size(); i++) {
+            String s = dictionary.getWordsList().get(i).getWordTarget() + "\t" + dictionary.getWordsList().get(i).getWordExplain();
+            outputStreamWriter.write(s);
+            outputStreamWriter.write("\n");
+        }
+        outputStreamWriter.flush();
     }
 }

@@ -1,6 +1,7 @@
 package Project;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class DictionaryCommandline {
@@ -22,6 +23,17 @@ public class DictionaryCommandline {
         }
     }
 
+    public void dictionarySeacher () {
+        System.out.println("Nhap tu ban muon tim kiem: ");
+        Scanner scan = new Scanner(System.in);
+        String word = scan.nextLine();
+        for(int i = 0; i < dictionaryManagement.getDictionnary().getWordsList().size(); i++) {
+            if(dictionaryManagement.getDictionnary().getWordsList().get(i).getWordTarget().indexOf(word) == 0) {
+                System.out.println(dictionaryManagement.getDictionnary().getWordsList().get(i).getWordTarget());
+            }
+        }
+    }
+
     public void dictionaryBasic() {
         dictionaryManagement.insertFromCommandline();
         showAllWords();
@@ -34,7 +46,7 @@ public class DictionaryCommandline {
         dictionaryManagement.dictionaryLookup();
     }
 
-    public void play() {
+    public void play() throws IOException  {
         Scanner scan = new Scanner(System.in);
         int num;
         while (true) {
@@ -43,7 +55,11 @@ public class DictionaryCommandline {
             System.out.println("2 : Tim kiem tu trong tu dien.");
             System.out.println("3 : In danh sach tu dien.");
             System.out.println("4 : Xoa tu trong tu dien.");
-            System.out.println("5 : Thoat");
+            System.out.println("5 : Sua tu trong tu dien.");
+            System.out.println("6 : Tim kiem tu");
+            System.out.println("7 : Xuat du lieu ra file");
+            System.out.println("8 : Thoat\n");
+
             num = scan.nextInt();
             if (num == 1) {
                 dictionaryManagement.insertFromCommandline();
@@ -53,8 +69,14 @@ public class DictionaryCommandline {
                 showAllWords();
             } else if (num == 4) {
                 dictionaryManagement.removeWord();
+            } else if (num == 5) {
+                dictionaryManagement.changeWordFromCommandLine();
+            } else if (num == 6) {
+                dictionarySeacher();
+            } else if (num == 7) {
+                dictionaryManagement.dictionaryExportToFile();
             }
-            else if (num == 5) {
+            else if (num == 8) {
                 break;
             }
         }
