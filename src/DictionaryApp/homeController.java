@@ -67,7 +67,7 @@ public class homeController implements Initializable {
     }
 
     public String getExplain (String target) {
-        if(target.length() == 0) return "";
+        if(target == null || target.length() == 0) return "";
         for (int i = 0; i < dic.getDictionnary().getWordsList().size(); i++) {
             if (dic.getDictionnary().getWordsList().get(i).getWordTarget().equals(target)) {
                 return dic.getDictionnary().getWordsList().get(i).getWordExplain();
