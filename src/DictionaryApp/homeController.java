@@ -31,33 +31,49 @@ public class homeController implements Initializable {
     @FXML
     private ListView<String> listView;
 
-    private ObservableList<String> listEng;
+    private List<String> listEng = new ArrayList<String>();
+
     private List<String> listVie = new ArrayList<String>();
 
     private DictionaryManagement dic = new DictionaryManagement();
     private ActionEvent event;
-
+//    private String currentWord;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        listEng = FXCollections.observableArrayList();
+
         addWordFile();
-        showAllWord();
-        listView.setItems(listEng);
-        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                String eng = listView.getSelectionModel().getSelectedItem();
-                if (eng.equals("Not Found!")) {
-                    engLabel.setText("Not Found!");
-                    vieLabel.setText("Không tìm thấy");
-                    return ;
-                }
-                int index = listEng.indexOf(eng);
-                engLabel.setText(eng + " :");
-                vieLabel.setText(listVie.get(index));
+        listEng = showAllWord();
+//        showAllWord();
+        listView.getItems().setAll(listEng);
+
+        text.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() != 0) {
+                listView.getItems().clear();
+                vieLabel.setText("");
+                listView.getItems().setAll(LookUpWord(newValue));
+            } else {
+                listView.getItems().setAll(listEng);
             }
         });
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String currentWord = listView.getSelectionModel().getSelectedItem();
+                engLabel.setText(currentWord);
+                vieLabel.setText(getExplain(currentWord));
+            }
+        });
+    }
+
+    public String getExplain (String target) {
+        if(target.length() == 0) return "";
+        for (int i = 0; i < dic.getDictionnary().getWordsList().size(); i++) {
+            if (dic.getDictionnary().getWordsList().get(i).getWordTarget().equals(target)) {
+                return dic.getDictionnary().getWordsList().get(i).getWordExplain();
+            }
+        }
+        return "";
     }
 
     public void addWordFile() {
@@ -67,25 +83,46 @@ public class homeController implements Initializable {
         }
     }
 
-    public void showAllWord() {
+    public List<String> showAllWord() {
+        List<String> newList = new ArrayList<String>();
         for (int i = 0; i<dic.getDictionnary().getWordsList().size(); i++) {
-            listEng.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
+            newList.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
         }
+        return newList;
     }
-    public void LookUpWord(ActionEvent event) {
-        String eng = text.getText();
-        ObservableList<String> newList =FXCollections.observableArrayList();
+
+    public List<String> LookUpWord (String word) {
+        List<String> listWord = new ArrayList<String>();
+
         boolean check = false;
-        for (int i = 0; i < dic.getDictionnary().getWordsList().size(); i++) {
-            if (dic.getDictionnary().getWordsList().get(i).getWordTarget().indexOf(eng) == 0 ) {
-                newList.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
+        for(int i = 0; i <dic.getDictionnary().getWordsList().size(); i++) {
+            if(dic.getDictionnary().getWordsList().get(i).getWordTarget().indexOf(word) == 0) {
+
+                listWord.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
                 check = true;
             }
         }
-        if (!check) {
-            newList.add("Not Found!");
+        if(!check) {
+            listWord.add("Not Found");
         }
-        listView.setItems(newList);
+        return listWord;
     }
+
+
+//    public void LookUpWord(ActionEvent event) {
+//        String eng = text.getText();
+//        ObservableList<String> newList =FXCollections.observableArrayList();
+//        boolean check = false;
+//        for (int i = 0; i < dic.getDictionnary().getWordsList().size(); i++) {
+//            if (dic.getDictionnary().getWordsList().get(i).getWordTarget().indexOf(eng) == 0 ) {
+//                newList.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
+//                check = true;
+//            }
+//        }
+//        if (!check) {
+//            newList.add("Not Found!");
+//        }
+//        listView.setItems(newList);
+//    }
 }
 
