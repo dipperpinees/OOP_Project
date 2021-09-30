@@ -11,7 +11,7 @@
     <children>
         <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="602.0" style="-fx-background-color: #0cf9e6;">
             <children>
-                <Text fill="#0c10f2" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="602.205078125">
+                <Text fill="#000bd9f8" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="602.205078125">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -25,10 +25,18 @@
                 <ListView fx:id="listView" layoutY="39.0" prefHeight="316.0" prefWidth="218.0" style="-fx-background-color: #0cf488;" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="216.0" layoutY="49.0" prefHeight="352.0" prefWidth="390.0">
+        <AnchorPane layoutX="217.0" layoutY="46.0" prefHeight="355.0" prefWidth="389.0" style="-fx-background-color: #6a6dcc;">
             <children>
-                <TextField fx:id="textEng" layoutX="73.0" layoutY="99.0" prefHeight="55.0" prefWidth="224.0" />
-                <TextField fx:id="textVie" layoutX="73.0" layoutY="210.0" prefHeight="55.0" prefWidth="224.0" />
+                <Label fx:id="engLabel" layoutX="42.0" layoutY="76.0" prefHeight="48.0" prefWidth="218.0" textFill="#eaffef">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font>
+                </Label>
+                <Label fx:id="vieLabel" layoutX="42.0" layoutY="164.0" prefHeight="48.0" prefWidth="218.0" textFill="#eaffef">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
     </children>
