@@ -1,6 +1,16 @@
-hello	xin chao
-fire	lua
-good bye	tam biet
-love	yeu
-hate	ghet
-haha	haha
+hello	xin chào
+bye	tạm biệt
+good	tốt
+say	nói
+old	cũ
+new	mới
+love	yêu
+hate	ghét
+beautiful	xinh đẹp
+build	xây dựng
+said	nói
+pay	trả
+make	làm
+face	mặt
+
+
