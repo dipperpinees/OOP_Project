@@ -12,5 +12,7 @@ said	nói
 pay	trả
 make	làm
 face	mặt
-
-
+run	chay
+look	nhìn
+alo	alo
+die	chết

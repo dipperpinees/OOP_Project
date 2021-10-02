@@ -8,13 +8,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +44,11 @@ public class homeController implements Initializable {
     private DictionaryManagement dic = new DictionaryManagement();
     private ActionEvent event;
 //    private String currentWord;
+
+    public void initDataHome(List<String> listEng, List<String> listVie) {
+        this.listEng = listEng;
+        this.listVie = listVie;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,7 +78,7 @@ public class homeController implements Initializable {
     }
 
     public String getExplain (String target) {
-        if(target.length() == 0) return "";
+        if(target == null || target.length() == 0) return "";
         for (int i = 0; i < dic.getDictionnary().getWordsList().size(); i++) {
             if (dic.getDictionnary().getWordsList().get(i).getWordTarget().equals(target)) {
                 return dic.getDictionnary().getWordsList().get(i).getWordExplain();
@@ -108,6 +119,16 @@ public class homeController implements Initializable {
         return listWord;
     }
 
+    public void gotoAddWord(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("addWord.fxml"));
+        Parent addWord = loader.load();
+        Scene AddScene = new Scene(addWord);
+        addWordController addController = loader.<addWordController>getController();
+        addController.initData(listEng,listVie);
+        stage.setScene(AddScene);
+    }
+
 
 //    public void LookUpWord(ActionEvent event) {
 //        String eng = text.getText();
@@ -125,4 +146,3 @@ public class homeController implements Initializable {
 //        listView.setItems(newList);
 //    }
 }
-
