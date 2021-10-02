@@ -36,7 +36,8 @@
                         <Font name="System Bold" size="28.0" />
                     </font>
                 </Label>
-            <Button layoutX="298.0" mnemonicParsing="false" onAction="#gotoAddWord" text="Thêm từ" />
+            <Button layoutX="298.0" layoutY="14.0" mnemonicParsing="false" onAction="#gotoAddWord" text="Thêm từ" />
+            <Button fx:id="changeButton" layoutX="288.0" layoutY="316.0" mnemonicParsing="false" text="Sửa nghĩa" onAction="#showInputTextDialog"/>
             </children>
         </AnchorPane>
     </children>

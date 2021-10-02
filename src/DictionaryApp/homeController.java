@@ -13,10 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -24,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -37,22 +35,23 @@ public class homeController implements Initializable {
     @FXML
     private ListView<String> listView;
 
+    @FXML
+    private Button changeButton = new Button();
+
     private List<String> listEng = new ArrayList<String>();
 
     private List<String> listVie = new ArrayList<String>();
 
-    private DictionaryManagement dic = new DictionaryManagement();
+    private DictionaryManagement dic = new DictionaryManagement() ;
     private ActionEvent event;
-//    private String currentWord;
 
     public void initDataHome(List<String> listEng, List<String> listVie) {
         this.listEng = listEng;
         this.listVie = listVie;
     }
-
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void initialize(URL location, ResourceBundle resources){
+        changeButton.setVisible(false);
         addWordFile();
         listEng = showAllWord();
 //        showAllWord();
@@ -66,6 +65,7 @@ public class homeController implements Initializable {
             } else {
                 listView.getItems().setAll(listEng);
             }
+            changeButton.setVisible(false);
         });
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -73,6 +73,7 @@ public class homeController implements Initializable {
                 String currentWord = listView.getSelectionModel().getSelectedItem();
                 engLabel.setText(currentWord);
                 vieLabel.setText(getExplain(currentWord));
+                changeButton.setVisible(true);
             }
         });
     }
@@ -129,20 +130,37 @@ public class homeController implements Initializable {
         stage.setScene(AddScene);
     }
 
+    public void showInputTextDialog() throws IOException  {
 
-//    public void LookUpWord(ActionEvent event) {
-//        String eng = text.getText();
-//        ObservableList<String> newList =FXCollections.observableArrayList();
-//        boolean check = false;
-//        for (int i = 0; i < dic.getDictionnary().getWordsList().size(); i++) {
-//            if (dic.getDictionnary().getWordsList().get(i).getWordTarget().indexOf(eng) == 0 ) {
-//                newList.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
-//                check = true;
-//            }
-//        }
-//        if (!check) {
-//            newList.add("Not Found!");
-//        }
-//        listView.setItems(newList);
+        TextInputDialog dialog = new TextInputDialog("");
+
+        dialog.setTitle("Sửa nghĩa từ");
+        dialog.setHeaderText("Sửa nghĩa từ: " + engLabel.getText());
+        dialog.setContentText("Nghĩa");
+
+        Optional<String> result = dialog.showAndWait();
+
+        result.ifPresent(name -> {
+            boolean check = dic.changeWordExplain(name, engLabel.getText());
+            vieLabel.setText(name);
+            showAlert("Đổi nghĩa thành công");
+            try {
+                dic.dictionaryExportToFile();
+            } catch(IOException ie) {
+                ie.printStackTrace();
+            }
+        });
+    }
+
+    public void showAlert(String newAlert)  {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Thông báo");
+        alert.setContentText(newAlert);
+
+        alert.showAndWait();
+    }
+
+//    public void changeListWordExplain(String newExplain) {
+//        return ;
 //    }
 }
