@@ -4,7 +4,7 @@ good	tốt
 say	nói
 old	cũ
 new	mới
-love	yêu
+love	tinh yeu
 hate	ghét
 beautiful	xinh đẹp
 build	xây dựng
@@ -16,3 +16,5 @@ run	chay
 look	nhìn
 alo	alo
 die	chết
+view	xem
+for	cho
