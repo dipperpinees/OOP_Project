@@ -1,5 +1,5 @@
-hello	xin chào
-bye	tạm biệt
+hello	as
+bye	tam biet
 good	tốt
 say	nói
 old	cũ
@@ -18,3 +18,4 @@ alo	alo
 die	chết
 view	xem
 for	cho
+tyest	ewf
