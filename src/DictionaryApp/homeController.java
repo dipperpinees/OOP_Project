@@ -37,6 +37,8 @@ public class homeController implements Initializable {
 
     @FXML
     private Button changeButton = new Button();
+    @FXML
+    private Button changeButton2 = new Button();
 
     private List<String> listEng = new ArrayList<String>();
 
@@ -52,6 +54,7 @@ public class homeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
         changeButton.setVisible(false);
+        changeButton2.setVisible(false);
         addWordFile();
         listEng = showAllWord();
 //        showAllWord();
@@ -66,6 +69,7 @@ public class homeController implements Initializable {
                 listView.getItems().setAll(listEng);
             }
             changeButton.setVisible(false);
+            changeButton2.setVisible(false);
         });
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -74,6 +78,7 @@ public class homeController implements Initializable {
                 engLabel.setText(currentWord);
                 vieLabel.setText(getExplain(currentWord));
                 changeButton.setVisible(true);
+                changeButton2.setVisible(true);
             }
         });
     }
@@ -158,6 +163,11 @@ public class homeController implements Initializable {
         alert.setContentText(newAlert);
 
         alert.showAndWait();
+    }
+
+    public void deleteWord(ActionEvent e) throws IOException  {
+        listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
+        showAlert("xoá thành công");
     }
 
 //    public void changeListWordExplain(String newExplain) {
