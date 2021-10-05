@@ -42,6 +42,8 @@ public class homeController implements Initializable {
     private Button changeButton = new Button();
     @FXML
     private Button changeButton2 = new Button();
+    @FXML
+    private Button changeButton3 = new Button(); //button speak
 
     private ArrayList<String> listEng = new ArrayList<String>();
 
@@ -58,6 +60,7 @@ public class homeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
         changeButton.setVisible(false);
         changeButton2.setVisible(false);
+        changeButton3.setVisible(false);
         dic.insertTxt();
         listEng = showAllWord();
 //        showAllWord();
@@ -74,6 +77,7 @@ public class homeController implements Initializable {
             }
             changeButton.setVisible(false);
             changeButton2.setVisible(false);
+            changeButton3.setVisible(false);
         });
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -85,6 +89,7 @@ public class homeController implements Initializable {
                     vieLabel.setText(wordInfo.get(0));
                     changeButton.setVisible(true);
                     changeButton2.setVisible(true);
+                    changeButton3.setVisible(true);
                 }
             }
         });
@@ -193,5 +198,11 @@ public class homeController implements Initializable {
         Media sound = new Media("http://api.voicerss.org/?key=458d0ac0b00d4d5bb52175e4c1e7159c&hl=en-us&src=" + target);
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+    }
+
+    public void speak(ActionEvent event) {
+        String target = listView.getSelectionModel().getSelectedItem();
+        String targetRes = target.replace(' ','-');
+        playSound(targetRes);
     }
 }
