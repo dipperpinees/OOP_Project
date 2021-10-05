@@ -52,9 +52,9 @@ public class homeController implements Initializable {
     private DictionaryManagement dic = new DictionaryManagement() ;
     private ActionEvent event;
     private String currentWord;
-    public void initDataHome(ArrayList<String> listEng, ArrayList<String> listVie) {
-        this.listEng = listEng;
-        this.listVie = listVie;
+
+    public void initDataHome(DictionaryManagement dic) {
+        this.dic = dic;
     }
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -149,7 +149,7 @@ public class homeController implements Initializable {
         Parent addWord = loader.load();
         Scene AddScene = new Scene(addWord);
         addWordController addController = loader.<addWordController>getController();
-        addController.initData(listEng,listVie);
+        addController.initData(dic);
         stage.setScene(AddScene);
     }
 

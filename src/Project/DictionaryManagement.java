@@ -197,7 +197,7 @@ public class DictionaryManagement {
             String wordExplain = dictionary.getWordsList().get(i).getWordExplain() + "\n";
             outputStreamWriter.write(wordExplain);
         }
-        outputStreamWriter.write("@" );
+        outputStreamWriter.write("\n@" );
         outputStreamWriter.flush();
     }
 
