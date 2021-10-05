@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,31 +9,44 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.homeController">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.homeController">
     <children>
         <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="607.0" style="-fx-background-color: #0cf9e6;">
             <children>
-                <Text fill="#000bd9f8" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="606.0">
+                <Text fill="#000bd9f8" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="720.0">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Text>
             </children>
         </AnchorPane>
-        <AnchorPane layoutY="47.0" prefHeight="355.0" prefWidth="153.0" style="-fx-background-color: #0cf488;">
+        <AnchorPane layoutY="47.0" prefHeight="430.0" prefWidth="204.0">
             <children>
-                <TextField fx:id="text" prefHeight="38.0" prefWidth="152.0" />
-                <ListView fx:id="listView" layoutY="39.0" prefHeight="316.0" prefWidth="152.0" style="-fx-background-color: #0cf488;" />
+                <TextField fx:id="text" layoutX="12.0" layoutY="14.0" prefHeight="34.0" prefWidth="177.0" />
+                <ListView fx:id="listView" layoutX="12.0" layoutY="56.0" prefHeight="362.0" prefWidth="177.0" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="153.0" layoutY="47.0" prefHeight="355.0" prefWidth="454.0" style="-fx-background-color: #6a6dcc;">
+        <AnchorPane layoutX="200.0" layoutY="50.0" prefHeight="430.0" prefWidth="520.0">
             <children>
-            <Button layoutX="353.0" layoutY="14.0" mnemonicParsing="false" onAction="#gotoAddWord" text="Thêm từ" />
-            <Button fx:id="changeButton" layoutX="348.0" layoutY="316.0" mnemonicParsing="false" onAction="#showInputTextDialog" text="Sửa nghĩa" />
-            <Button fx:id="changeButton2" layoutX="255.0" layoutY="316.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="25.0" prefWidth="69.0" text="Xoá từ" textFill="#ee0c0c" />
-            <Text fx:id="engLabel" fill="#f5f4f4" layoutX="22.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="284.0" />
-            <Text fx:id="vieLabel" fill="#f2f2f2" layoutX="22.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="418.0" />
-            <Button fx:id="changeButton3" layoutX="270.0" layoutY="14.0" mnemonicParsing="false" onAction="#speak" text="Speak" />
+            <Button layoutX="428.0" layoutY="14.0" mnemonicParsing="false" onAction="#gotoAddWord" text="Thêm từ" />
+            <Button fx:id="changeButton" layoutX="423.0" layoutY="389.0" mnemonicParsing="false" onAction="#showInputTextDialog" text="Sửa nghĩa" />
+            <Button fx:id="changeButton2" layoutX="337.0" layoutY="389.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="25.0" prefWidth="69.0" text="Xoá từ" textFill="#ee0c0c" />
+            <Text fx:id="engLabel" fill="#1e1e1e" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="328.0">
+               <font>
+                  <Font size="20.0" />
+               </font></Text>
+            <Button fx:id="changeButton3" alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="14.0" mnemonicParsing="false" onAction="#speak" text="Speak" textFill="#111010">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <ScrollPane layoutX="12.0" layoutY="61.0" prefHeight="312.0" prefWidth="490.0" style="-fx-padding: 16;">
+               <content>
+                  <Text fx:id="vieLabel" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="372.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+               </content>
+            </ScrollPane>
             </children>
         </AnchorPane>
     </children>
