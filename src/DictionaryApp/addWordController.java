@@ -22,14 +22,14 @@ import java.util.ResourceBundle;
 
 public class addWordController {
 
-    private List<String> listEng;
-    private List<String> listVie;
+    private ArrayList<String> listEng;
+    private ArrayList<String> listVie;
     @FXML
     private TextField engText;
     @FXML
     private TextField vieText;
 
-    public void initData(List<String> listEng, List<String> listVie) {
+    public void initData(ArrayList<String> listEng, ArrayList<String> listVie) {
         this.listEng = listEng;
         this.listVie = listVie;
     }

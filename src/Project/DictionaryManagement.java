@@ -33,7 +33,7 @@ public class DictionaryManagement {
             target = scan.nextLine();
             System.out.print("Nhap nghia : ");
             expain = scan.nextLine();
-            Word word = new Word(target,expain);
+            Word word = new Word(target,expain, "");
             dictionary.getWordsList().add(word);
             String s = target + '\t' + expain;
             try {
@@ -117,10 +117,56 @@ public class DictionaryManagement {
             numOfTab = str.indexOf('\t');
             eng = str.substring(0,numOfTab);
             vie = str.substring(numOfTab + 1);
-            Word word = new Word(eng,vie);
+            Word word = new Word(eng,vie, "");
             dictionary.getWordsList().add(word);
         }
 
+    }
+
+    private String getWord(String line) {
+        if(line.indexOf('/') == -1) {
+            return line;
+        }
+        return line.substring(1, line.indexOf('/') - 1);
+    }
+
+    private String getPronounce(String line) {
+        if(line.indexOf('/') == -1) {
+            return "";
+        }
+        return line.substring(line.indexOf('/'));
+    }
+
+    public void insertTxt() {
+        String line;
+        boolean check = false;
+        String target = "";
+        String explain = "";
+        String pronounce = "";
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("src/AnhViet.txt"));
+
+            while((line = reader.readLine()) != null){
+                if(line.length() == 0 && target.length() != 0) {
+                    dictionary.getWordsList().add(new Word(target, explain, pronounce));
+                    target = "";
+                    explain = "";
+                    pronounce = "";
+                    check = false;
+                }
+                if(check && line.length() != 0) {
+                    explain = explain.concat(line + "\n");
+                }
+                if(line.length() != 0 && line.charAt(0) == '@') {
+                    target = getWord(line);
+                    pronounce = getPronounce(line);
+                    check = true;
+                }
+
+            }
+        }catch (Exception e){
+            System.out.println("Can't read file " + e);
+        }
     }
 
     public void changeWordFromCommandLine () {
@@ -142,14 +188,16 @@ public class DictionaryManagement {
     }
 
     public void dictionaryExportToFile () throws IOException {
-        File file = new File("src/dictionaries.txt");
+        File file = new File("src/AnhViet.txt");
         OutputStream outputStream = new FileOutputStream(file);
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
         for(int i = 0; i < dictionary.getWordsList().size(); i++) {
-            String s = dictionary.getWordsList().get(i).getWordTarget() + "\t" + dictionary.getWordsList().get(i).getWordExplain();
-            outputStreamWriter.write(s);
-            outputStreamWriter.write("\n");
+            String wordLabel = "\n" + "@" + dictionary.getWordsList().get(i).getWordTarget() + " " + dictionary.getWordsList().get(i).getWordPronounce() + "\n";
+            outputStreamWriter.write(wordLabel);
+            String wordExplain = dictionary.getWordsList().get(i).getWordExplain() + "\n";
+            outputStreamWriter.write(wordExplain);
         }
+        outputStreamWriter.write("@" );
         outputStreamWriter.flush();
     }
 
@@ -157,6 +205,17 @@ public class DictionaryManagement {
         for(int i = 0; i < dictionary.getWordsList().size(); i++) {
             if( dictionary.getWordsList().get(i).getWordTarget().equals(target)) {
                 dictionary.getWordsList().get(i).setWordExplain(newExplain);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeCurrentWord(String wordRemove) {
+        if(wordRemove == null) return false;
+        for (int i = 0; i < dictionary.getWordsList().size(); i++) {
+            if (dictionary.getWordsList().get(i).getWordTarget().equals(wordRemove)) {
+                dictionary.getWordsList().remove(i);
                 return true;
             }
         }

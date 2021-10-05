@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,9 +32,9 @@ public class homeController implements Initializable {
     @FXML
     private TextField text;
     @FXML
-    private Label engLabel;
+    private Text engLabel;
     @FXML
-    private Label vieLabel;
+    private Text vieLabel;
     @FXML
     private ListView<String> listView;
 
@@ -42,14 +43,14 @@ public class homeController implements Initializable {
     @FXML
     private Button changeButton2 = new Button();
 
-    private List<String> listEng = new ArrayList<String>();
+    private ArrayList<String> listEng = new ArrayList<String>();
 
-    private List<String> listVie = new ArrayList<String>();
+    private ArrayList<String> listVie = new ArrayList<String>();
 
     private DictionaryManagement dic = new DictionaryManagement() ;
     private ActionEvent event;
-
-    public void initDataHome(List<String> listEng, List<String> listVie) {
+    private String currentWord;
+    public void initDataHome(ArrayList<String> listEng, ArrayList<String> listVie) {
         this.listEng = listEng;
         this.listVie = listVie;
     }
@@ -57,7 +58,7 @@ public class homeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
         changeButton.setVisible(false);
         changeButton2.setVisible(false);
-        addWordFile();
+        dic.insertTxt();
         listEng = showAllWord();
 //        showAllWord();
         listView.getItems().setAll(listEng);
@@ -66,6 +67,7 @@ public class homeController implements Initializable {
             if (newValue.length() != 0) {
                 listView.getItems().clear();
                 vieLabel.setText("");
+                engLabel.setText("");
                 listView.getItems().setAll(LookUpWord(newValue));
             } else {
                 listView.getItems().setAll(listEng);
@@ -76,47 +78,56 @@ public class homeController implements Initializable {
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                String currentWord = listView.getSelectionModel().getSelectedItem();
-                engLabel.setText(currentWord);
-                vieLabel.setText(getExplain(currentWord));
-                changeButton.setVisible(true);
-                changeButton2.setVisible(true);
+                if(newValue != null) {
+                    currentWord = listView.getSelectionModel().getSelectedItem();
+                    ArrayList<String> wordInfo = getExplain(currentWord);
+                    engLabel.setText(currentWord + " " + wordInfo.get(1));
+                    vieLabel.setText(wordInfo.get(0));
+                    changeButton.setVisible(true);
+                    changeButton2.setVisible(true);
+                }
             }
         });
     }
 
-    public String getExplain (String target) {
-        if(target == null || target.length() == 0) return "";
+    public ArrayList<String> getExplain (String target) {
+        ArrayList<String> newList = new ArrayList<String>();
+        if(target == null || target.length() == 0) return newList;
         for (int i = 0; i < dic.getDictionnary().getWordsList().size(); i++) {
             if (dic.getDictionnary().getWordsList().get(i).getWordTarget().equals(target)) {
-                return dic.getDictionnary().getWordsList().get(i).getWordExplain();
+                newList.add(dic.getDictionnary().getWordsList().get(i).getWordExplain());
+                newList.add(dic.getDictionnary().getWordsList().get(i).getWordPronounce());
+                return newList;
             }
         }
-        return "";
+        return newList;
     }
 
-    public void addWordFile() {
-        dic.insertFromFile();
-        for (int i = 0; i<dic.getDictionnary().getWordsList().size(); i++) {
-            listVie.add(dic.getDictionnary().getWordsList().get(i).getWordExplain());
-        }
-    }
+//    public void addWordFile() {
+//        dic.insertFromFile();
+//        for (int i = 0; i<dic.getDictionnary().getWordsList().size(); i++) {
+//            listVie.add(dic.getDictionnary().getWordsList().get(i).getWordExplain());
+//        }
+//    }
 
-    public List<String> showAllWord() {
-        List<String> newList = new ArrayList<String>();
+    public ArrayList<String> showAllWord() {
+        ArrayList<String> newList = new ArrayList<String>();
         for (int i = 0; i<dic.getDictionnary().getWordsList().size(); i++) {
             newList.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
         }
         return newList;
     }
 
-    public List<String> LookUpWord (String word) {
-        List<String> listWord = new ArrayList<String>();
+    public ArrayList<String> LookUpWord (String word) {
+        ArrayList<String> listWord = new ArrayList<String>();
+
+        if(word == null) {
+            return listWord;
+        }
 
         boolean check = false;
         for(int i = 0; i <dic.getDictionnary().getWordsList().size(); i++) {
             if(dic.getDictionnary().getWordsList().get(i).getWordTarget().indexOf(word) == 0) {
-
                 listWord.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
                 check = true;
             }
@@ -148,7 +159,7 @@ public class homeController implements Initializable {
         Optional<String> result = dialog.showAndWait();
 
         result.ifPresent(name -> {
-            boolean check = dic.changeWordExplain(name, engLabel.getText());
+            boolean check = dic.changeWordExplain(name, this.currentWord);
             vieLabel.setText(name);
             showAlert("Đổi nghĩa thành công");
             try {
@@ -168,8 +179,14 @@ public class homeController implements Initializable {
     }
 
     public void deleteWord(ActionEvent e) throws IOException  {
+        boolean check = dic.removeCurrentWord(currentWord);
         listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
         showAlert("xoá thành công");
+        try {
+            dic.dictionaryExportToFile();
+        } catch(IOException ie) {
+            ie.printStackTrace();
+        }
     }
 
     public void playSound(String target) {
