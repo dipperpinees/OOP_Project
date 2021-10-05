@@ -157,7 +157,7 @@ public class DictionaryManagement {
                 if(check && line.length() != 0) {
                     explain = explain.concat(line + "\n");
                 }
-                if(line.length() != 0 && line.charAt(0) == '@') {
+                if(line.length() > 1 && line.charAt(0) == '@') {
                     target = getWord(line);
                     pronounce = getPronounce(line);
                     check = true;
