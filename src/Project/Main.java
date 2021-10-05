@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        DictionaryCommandline Dic = new DictionaryCommandline();
-        Dic.play();
+//        DictionaryCommandline Dic = new DictionaryCommandline();
+//        Dic.play();
    
     }
 }
