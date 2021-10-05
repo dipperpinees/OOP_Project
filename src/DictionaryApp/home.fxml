@@ -29,8 +29,9 @@
             <Button layoutX="353.0" layoutY="14.0" mnemonicParsing="false" onAction="#gotoAddWord" text="Thêm từ" />
             <Button fx:id="changeButton" layoutX="348.0" layoutY="316.0" mnemonicParsing="false" onAction="#showInputTextDialog" text="Sửa nghĩa" />
             <Button fx:id="changeButton2" layoutX="255.0" layoutY="316.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="25.0" prefWidth="69.0" text="Xoá từ" textFill="#ee0c0c" />
-            <Text fx:id="engLabel" fill="#f5f4f4" layoutX="33.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="284.0" />
-            <Text fx:id="vieLabel" fill="#f2f2f2" layoutX="33.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="418.0" />
+            <Text fx:id="engLabel" fill="#f5f4f4" layoutX="22.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="284.0" />
+            <Text fx:id="vieLabel" fill="#f2f2f2" layoutX="18.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="418.0" />
+            <Button fx:id="changeButton3" layoutX="270.0" layoutY="14.0" mnemonicParsing="false" onAction="#speak" text="Speak" />
             </children>
         </AnchorPane>
     </children>
