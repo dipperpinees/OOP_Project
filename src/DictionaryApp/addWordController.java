@@ -1,5 +1,7 @@
 package DictionaryApp;
 
+import Project.DictionaryManagement;
+import Project.Word;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,17 +23,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class addWordController {
+    private DictionaryManagement dic;
 
-    private ArrayList<String> listEng;
-    private ArrayList<String> listVie;
     @FXML
     private TextField engText;
     @FXML
     private TextField vieText;
+    @FXML
+    private TextField proText;
 
-    public void initData(ArrayList<String> listEng, ArrayList<String> listVie) {
-        this.listEng = listEng;
-        this.listVie = listVie;
+    public void initData(DictionaryManagement dic) {
+        this.dic = dic;
     }
 
 
@@ -41,42 +43,53 @@ public class addWordController {
         Parent homeParent = loader.load();
         Scene homeScene = new Scene(homeParent);
         homeController home = loader.<homeController>getController();
-        home.initDataHome(listEng,listVie);
+        home.initDataHome(dic);
         stage.setScene(homeScene);
 
     }
 
-    public void addWo(ActionEvent event) {
+    public void addWo(ActionEvent event) throws IOException {
         FileWriter fw = null;
         BufferedWriter bw = null;
         String eng = engText.getText();
         String vie = vieText.getText();
+        String pronounce = proText.getText();
         Alert alertFalse = new Alert(Alert.AlertType.WARNING);
         alertFalse.setHeaderText("Từ đã có hoặc từ không hợp lệ");
-        if (listEng.indexOf(eng) != -1) {
+        boolean check = false;
+        for (int i=0;i<dic.getDictionnary().getWordsList().size();i++) {
+            if (dic.getDictionnary().getWordsList().get(i).getWordTarget().equals(eng)) {
+                check = true;
+                break;
+            }
+        }
+        if (check) {
             alertFalse.show();
             return;
-        } else {
-            if (eng != null && vie != null && eng.length() * vie.length() != 0) {
-                listEng.add(eng);
-                listVie.add(vie);
-                String s = eng + '\t' + vie;
+        } else if (eng != null && vie != null && eng.length() * vie.length() != 0) {
+                if (pronounce == null) {
+                    pronounce = "";
+                }
+                pronounce = "/" + pronounce + "/";
+                String s = "\n@" + eng + " " + pronounce + "\n";
                 try {
-                    fw = new FileWriter("src/dictionaries.txt", true);
+                    fw = new FileWriter("src/AnhViet.txt", true);
                     bw = new BufferedWriter(fw);
                     bw.write(s);
-                    bw.newLine();
+                    bw.write(vie);
+                    bw.write("\n\n@");
                     bw.close();
                     fw.close();
                 } catch (Exception ex) {
 
                 }
-                Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
-                alert0.setHeaderText("Thêm thành công");
-                alert0.show();
+                dic.getDictionnary().getWordsList().add(new Word(eng,vie,pronounce));
+                //dic.dictionaryExportToFile();
+                Alert alertTrue = new Alert(Alert.AlertType.INFORMATION);
+                alertTrue.setHeaderText("Thêm thành công");
+                alertTrue.show();
                 return;
             }
-        }
         alertFalse.show();
     }
 }

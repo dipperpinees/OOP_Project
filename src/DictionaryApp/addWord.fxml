@@ -25,12 +25,12 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="140.0" layoutY="53.0" prefHeight="39.0" prefWidth="138.0" text="Nhập từ mới :" textFill="#eeff00">
+            <Label layoutX="140.0" layoutY="40.0" prefHeight="39.0" prefWidth="159.0" text="Nhập từ mới(*) :" textFill="#eeff00">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="140.0" layoutY="148.0" prefHeight="30.0" prefWidth="138.0" text="Nhập nghĩa :" textFill="#eeff00">
+            <Label layoutX="140.0" layoutY="128.0" prefHeight="30.0" prefWidth="159.0" text="Nhập nghĩa(*) :" textFill="#eeff00">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -40,21 +40,31 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="engText" layoutX="140.0" layoutY="92.0" prefHeight="39.0" prefWidth="200.0">
+            <TextField fx:id="engText" layoutX="140.0" layoutY="79.0" prefHeight="39.0" prefWidth="200.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="vieText" layoutX="140.0" layoutY="187.0" prefHeight="39.0" prefWidth="200.0">
+            <TextField fx:id="vieText" layoutX="140.0" layoutY="166.0" prefHeight="39.0" prefWidth="200.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <Button layoutX="286.0" layoutY="255.0" mnemonicParsing="false" onAction="#addWo" text="Thêm">
+            <Button layoutX="288.0" layoutY="302.0" mnemonicParsing="false" onAction="#addWo" text="Thêm">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
+            <Label layoutX="140.0" layoutY="216.0" prefHeight="30.0" prefWidth="159.0" text="Nhập phát âm :" textFill="#eeff00">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="proText" layoutX="140.0" layoutY="253.0" prefHeight="39.0" prefWidth="200.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
          </children>
         </AnchorPane>
     </children>
