@@ -84,9 +84,14 @@ public class homeController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if(newValue != null) {
                     currentWord = listView.getSelectionModel().getSelectedItem();
-                    ArrayList<String> wordInfo = getExplain(currentWord);
-                    engLabel.setText(currentWord + " " + wordInfo.get(1));
-                    vieLabel.setText(wordInfo.get(0));
+                    if (currentWord.equals("Not Found")) {
+                        vieLabel.setText("Không có thông tin");
+                        engLabel.setText("Not Found");
+                    } else {
+                        ArrayList<String> wordInfo = getExplain(currentWord);
+                        engLabel.setText(currentWord + " " + wordInfo.get(1));
+                        vieLabel.setText(wordInfo.get(0));
+                    }
                     changeButton.setVisible(true);
                     changeButton2.setVisible(true);
                     changeButton3.setVisible(true);
