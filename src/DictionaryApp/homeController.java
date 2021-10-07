@@ -50,8 +50,9 @@ public class homeController implements Initializable {
     private ArrayList<String> listVie = new ArrayList<String>();
 
     private DictionaryManagement dic = new DictionaryManagement() ;
-    private ActionEvent event;
+    //private ActionEvent event;
     private String currentWord;
+    private VoiceGG voiceGG = new VoiceGG("kevin16");
 
     public void initDataHome(DictionaryManagement dic) {
         this.dic = dic;
@@ -199,15 +200,15 @@ public class homeController implements Initializable {
         }
     }
 
-    public void playSound(String target) {
-        Media sound = new Media("http://api.voicerss.org/?key=458d0ac0b00d4d5bb52175e4c1e7159c&hl=en-us&src=" + target);
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-    }
+//    public void playSound(String target) {
+//        Media sound = new Media("http://api.voicerss.org/?key=458d0ac0b00d4d5bb52175e4c1e7159c&hl=en-us&src=" + target);
+//        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+//        mediaPlayer.play();
+//    }
 
     public void speak(ActionEvent event) {
         String target = listView.getSelectionModel().getSelectedItem();
-        String targetRes = target.replace(' ','-');
-        playSound(targetRes);
+        String targetRes = target.replace('-',' ');
+        voiceGG.say(targetRes);
     }
 }
