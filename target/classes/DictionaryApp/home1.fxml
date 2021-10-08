@@ -90,6 +90,7 @@
                      </font></Text>
                </content>
             </ScrollPane>
+            <Button layoutX="47.0" layoutY="385.0" mnemonicParsing="false" onAction="#gotoTextTranslation" prefHeight="39.0" prefWidth="192.0" text="Dịch văn bản" />
             </children>
         </AnchorPane>
     </children>

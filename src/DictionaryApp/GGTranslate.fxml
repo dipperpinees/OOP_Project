@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6a6dcc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.textTranslation">
+   <children>
+      <AnchorPane layoutY="-5.0" prefHeight="52.0" prefWidth="604.0" style="-fx-background-color: #0cf9e6;">
+         <children>
+            <Text fill="#000bd9" layoutX="163.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="278.13671875">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Button layoutX="18.0" layoutY="62.0" mnemonicParsing="false" onAction="#goHome" prefHeight="25.0" prefWidth="61.0" text="Back" />
+      <Label layoutX="101.0" layoutY="57.0" prefHeight="17.0" prefWidth="242.0" text="Text Translation" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="142.0" text="ENG" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="300.0" text="VIE" textFill="#f2eeee">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="232.0" layoutY="222.0" mnemonicParsing="false" onAction="#TTranslate" prefHeight="25.0" prefWidth="54.0" text="E-&gt;V">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TextArea fx:id="TextT1" layoutX="58.0" layoutY="103.0" prefHeight="112.0" prefWidth="534.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <TextArea fx:id="TextT2" layoutX="58.0" layoutY="261.0" prefHeight="112.0" prefWidth="534.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="380.0" layoutY="222.0" mnemonicParsing="false" onAction="#T2Translate" text="V-&gt;E">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
