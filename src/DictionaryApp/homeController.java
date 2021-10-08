@@ -159,6 +159,14 @@ public class homeController implements Initializable {
         stage.setScene(AddScene);
     }
 
+    public void gotoTextTranslation(ActionEvent event1) throws IOException {
+        Stage stage1 = (Stage) ((Node) event1.getSource()).getScene().getWindow();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("GGTranslate.fxml"));
+        Parent trans = loader1.load();
+        Scene TransScene = new Scene(trans);
+        stage1.setScene(TransScene);
+    }
+
     public void showInputTextDialog() throws IOException  {
 
         TextInputDialog dialog = new TextInputDialog("");
@@ -211,4 +219,6 @@ public class homeController implements Initializable {
         String targetRes = target.replace('-',' ');
         voiceGG.say(targetRes);
     }
+
+
 }
