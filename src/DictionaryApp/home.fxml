@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.homeController">
+    <children>
+        <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="607.0" style="-fx-background-color: #0cf9e6;">
+            <children>
+                <Text fill="#000bd9f8" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="720.0">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="47.0" prefHeight="430.0" prefWidth="204.0">
+            <children>
+                <TextField fx:id="text" layoutX="12.0" layoutY="6.0" prefHeight="39.0" prefWidth="177.0">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets right="30.0" />
+                    </padding></TextField>
+                <ListView fx:id="listView" layoutX="12.0" layoutY="56.0" prefHeight="362.0" prefWidth="177.0" stylesheets="@style.css" />
+                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="159.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/lookup.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="200.0" layoutY="50.0" prefHeight="430.0" prefWidth="520.0" style="-fx-background-color: #FFFFFF;">
+            <children>
+                <Button layoutX="399.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoAddWord" prefHeight="44.0" prefWidth="103.0" stylesheets="@style.css" text="Thêm" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/addnew.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button fx:id="changeButton" layoutX="291.0" layoutY="380.0" mnemonicParsing="false" onAction="#showInputTextDialog" prefHeight="48.0" prefWidth="103.0" stylesheets="@style.css" text="Sửa" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/change.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button fx:id="changeButton2" graphicTextGap="5.0" layoutX="399.0" layoutY="380.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="48.0" prefWidth="103.0" stylesheets="@style.css" text="Xóa" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/delete.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Text fx:id="engLabel" fill="RED" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="328.0">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Text>
+                <Button fx:id="changeButton3" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="336.0" layoutY="12.0" mnemonicParsing="false" onAction="#speak" prefHeight="44.0" prefWidth="53.0" stylesheets="@style.css" textFill="#111010">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/voice.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <ScrollPane layoutX="12.0" layoutY="61.0" prefHeight="312.0" prefWidth="490.0" style="-fx-padding: 16;">
+                    <content>
+                        <Text fx:id="vieLabel" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="372.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Text>
+                    </content>
+                </ScrollPane>
+                <Button layoutX="184.0" layoutY="380.0" mnemonicParsing="false" onAction="#gotoTextTranslation" prefHeight="48.0" prefWidth="103.0" stylesheets="@style.css" text="Dịch">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/translation.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
