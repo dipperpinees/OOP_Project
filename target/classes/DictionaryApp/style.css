@@ -21,4 +21,13 @@
 -fx-background-color : #460DE8;
 -fx-text-fill: white;
 }
+.button1{
+-fx-background-color : #6a6dcc;
+-fx-text-fill: white;
+}
+.button1:hover
+{
+-fx-background-color : #B10DF4;
+-fx-text-fill: white;
+}
 

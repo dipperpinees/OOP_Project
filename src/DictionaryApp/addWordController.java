@@ -33,7 +33,7 @@ public class addWordController {
 
     public void goHome(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("home1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
         Parent homeParent = loader.load();
         Scene homeScene = new Scene(homeParent);
         homeController home = loader.<homeController>getController();
