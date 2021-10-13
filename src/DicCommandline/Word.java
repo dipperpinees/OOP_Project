@@ -1,4 +1,4 @@
-package Project;
+package DicCommandline;
 
 public class Word {
     private String wordTarget;

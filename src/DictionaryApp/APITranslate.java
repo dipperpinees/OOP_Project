@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-//import static com.google.api.translate.Language.VIETNAMESE;
-
 
 public class APITranslate {
 

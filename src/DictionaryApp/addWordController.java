@@ -1,7 +1,7 @@
 package DictionaryApp;
 
-import Project.DictionaryManagement;
-import Project.Word;
+import DicCommandline.DictionaryManagement;
+import DicCommandline.Word;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +49,7 @@ public class addWordController {
         String vie = vieText.getText();
         String pronounce = proText.getText();
         Alert alertFalse = new Alert(Alert.AlertType.WARNING);
+        alertFalse.setTitle("Không thành công");
         alertFalse.setHeaderText("Từ đã có hoặc từ không hợp lệ");
         boolean check = false;
         for (int i=0;i<dic.getDictionnary().getWordsList().size();i++) {
@@ -78,8 +79,8 @@ public class addWordController {
 
                 }
                 dic.getDictionnary().getWordsList().add(new Word(eng,vie,pronounce));
-                //dic.dictionaryExportToFile();
                 Alert alertTrue = new Alert(Alert.AlertType.INFORMATION);
+                alertTrue.setTitle("Thông tin");
                 alertTrue.setHeaderText("Thêm thành công");
                 alertTrue.show();
                 return;
