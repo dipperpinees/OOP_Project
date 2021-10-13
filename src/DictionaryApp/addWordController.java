@@ -72,7 +72,7 @@ public class addWordController {
                     bw = new BufferedWriter(fw);
                     bw.write(s);
                     bw.write(vie);
-                    bw.write("\n\n@");
+                    bw.write("\n");
                     bw.close();
                     fw.close();
                 } catch (Exception ex) {

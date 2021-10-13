@@ -161,7 +161,9 @@ public class DictionaryManagement {
                     pronounce = getPronounce(line);
                     check = true;
                 }
-
+            }
+            if (target.length() != 0) {
+                dictionary.getWordsList().add(new Word(target, explain, pronounce));
             }
         }catch (Exception e){
             System.out.println("Can't read file " + e);
@@ -196,7 +198,7 @@ public class DictionaryManagement {
             String wordExplain = dictionary.getWordsList().get(i).getWordExplain() + "\n";
             outputStreamWriter.write(wordExplain);
         }
-        outputStreamWriter.write("\n@" );
+        //outputStreamWriter.write("\n@" );
         outputStreamWriter.flush();
     }
 
