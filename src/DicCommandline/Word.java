@@ -28,7 +28,6 @@ public class Word {
         wordPronounce = word;
     }
 
-
     public Word() {
         this.wordTarget = null;
         this.wordExplain = null;

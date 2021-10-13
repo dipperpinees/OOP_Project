@@ -10,37 +10,37 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.addWordController">
     <children>
-        <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="720.0" style="-fx-background-color: #0cf9e6;">
+        <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="607.0" style="-fx-background-color: #0866a9;">
             <children>
-                <Text fill="#000bd9f8" layoutX="57.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="606.0">
+                <Text fill="#fffffff7" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="720.0">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Text>
+                <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="484.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/dictionary.png" />
+                    </image>
+                </ImageView>
             </children>
         </AnchorPane>
-        <AnchorPane layoutY="47.0" prefHeight="433.0" prefWidth="720.0" style="-fx-background-color: #6a6dcc;">
+        <AnchorPane layoutY="47.0" prefHeight="433.0" prefWidth="720.0">
             <children>
-                <Label layoutX="113.0" layoutY="-2.0" prefHeight="48.0" prefWidth="159.0" text="Thêm từ mới" textFill="WHITE">
+                <Label layoutX="154.0" layoutY="13.0" prefHeight="48.0" prefWidth="239.0" text="Thêm từ mới" textFill="#111111">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Label layoutX="140.0" layoutY="45.0" prefHeight="39.0" prefWidth="159.0" text="Nhập từ mới(*) :" textFill="#eeff00">
+                <Label layoutX="149.0" layoutY="85.0" prefHeight="39.0" prefWidth="198.0" text="Nhập từ mới*  :">
                     <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font size="20.0" />
                     </font>
                 </Label>
-                <Label layoutX="140.0" layoutY="137.0" prefHeight="30.0" prefWidth="159.0" text="Nhập nghĩa(*) :" textFill="#eeff00">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Label>
-                <Button layoutY="1.0" mnemonicParsing="false" onAction="#goHome" prefHeight="46.0" prefWidth="99.0" styleClass="button1" stylesheets="@style.css" text="Back" textFill="WHITE">
+                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" prefHeight="46.0" prefWidth="132.0" styleClass="button1" stylesheets="@style.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/backk.png" />
+                                <Image url="@../image/back.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -48,31 +48,43 @@
                         <Font size="19.0" />
                     </font>
                 </Button>
-                <TextField fx:id="engText" layoutX="140.0" layoutY="90.0" prefHeight="39.0" prefWidth="213.0">
+                <TextField fx:id="engText" layoutX="153.0" layoutY="124.0" prefHeight="39.0" prefWidth="414.0">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="vieText" layoutX="140.0" layoutY="178.0" prefHeight="39.0" prefWidth="213.0">
+                <TextField fx:id="vieText" layoutX="152.0" layoutY="210.0" prefHeight="39.0" prefWidth="414.0">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </TextField>
-                <Button layoutX="253.0" layoutY="340.0" mnemonicParsing="false" onAction="#addWo" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #0B00FF;" text="Thêm" textFill="WHITE">
+                <Button layoutX="317.0" layoutY="364.0" mnemonicParsing="false" onAction="#addWo" prefHeight="46.0" prefWidth="132.0" style="-: #0B00FF;" text="Thêm">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                     </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                 </Button>
-                <Label layoutX="140.0" layoutY="230.0" prefHeight="30.0" prefWidth="159.0" text="Nhập phát âm :" textFill="#eeff00">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="proText" layoutX="140.0" layoutY="279.0" prefHeight="39.0" prefWidth="213.0">
+                <TextField fx:id="proText" layoutX="153.0" layoutY="305.0" prefHeight="39.0" prefWidth="414.0">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </TextField>
+            <Label layoutX="154.0" layoutY="171.0" prefHeight="39.0" prefWidth="198.0" text="Nhập nghĩa* :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="154.0" layoutY="266.0" prefHeight="39.0" prefWidth="198.0" text="Nhập phát âm :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>

@@ -12,18 +12,23 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.homeController">
     <children>
-        <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="607.0" style="-fx-background-color: #0cf9e6;">
+        <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="607.0" style="-fx-background-color: #0866a9;">
             <children>
-                <Text fill="#000bd9f8" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="720.0">
+                <Text fill="#fffffff7" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="720.0">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Text>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="484.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/dictionary.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
         <AnchorPane layoutY="47.0" prefHeight="430.0" prefWidth="204.0">
             <children>
-                <TextField fx:id="text" layoutX="12.0" layoutY="6.0" prefHeight="39.0" prefWidth="177.0">
+                <TextField fx:id="text" layoutX="12.0" layoutY="10.0" prefHeight="39.0" prefWidth="186.0" style="-fx-padding: 8px;">
                     <font>
                         <Font size="19.0" />
                     </font>
@@ -33,56 +38,56 @@
                     <padding>
                         <Insets right="30.0" />
                     </padding></TextField>
-                <ListView fx:id="listView" layoutX="12.0" layoutY="56.0" prefHeight="362.0" prefWidth="177.0" stylesheets="@style.css" />
-                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="159.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                <ListView fx:id="listView" layoutX="12.0" layoutY="61.0" prefHeight="357.0" prefWidth="186.0" stylesheets="@style.css" />
+                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="160.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../image/lookup.png" />
                     </image>
                 </ImageView>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="200.0" layoutY="50.0" prefHeight="430.0" prefWidth="520.0" style="-fx-background-color: #FFFFFF;">
+        <AnchorPane layoutX="200.0" layoutY="47.0" prefHeight="430.0" prefWidth="520.0" style="-fx-background-color: #FFFFFF;">
             <children>
-                <Button layoutX="399.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoAddWord" prefHeight="44.0" prefWidth="103.0" stylesheets="@style.css" text="Thêm" textFill="WHITE">
+                <Button layoutX="390.0" layoutY="10.0" mnemonicParsing="false" onAction="#gotoAddWord" prefHeight="39.0" prefWidth="109.0" stylesheets="@style.css" text="Thêm từ" textFill="WHITE">
                     <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/addnew.png" />
+                                <Image url="@../image/plus.png" />
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button fx:id="changeButton" layoutX="291.0" layoutY="380.0" mnemonicParsing="false" onAction="#showInputTextDialog" prefHeight="48.0" prefWidth="103.0" stylesheets="@style.css" text="Sửa" textFill="WHITE">
-                    <graphic>
-                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                <Button fx:id="changeButton" layoutX="132.0" layoutY="383.0" mnemonicParsing="false" onAction="#showInputTextDialog" prefHeight="39.0" prefWidth="103.0" stylesheets="@style.css" text="Sửa từ" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/change.png" />
+                                <Image url="@../image/tools.png" />
                             </image>
                         </ImageView>
-                    </graphic></Button>
-                <Button fx:id="changeButton2" graphicTextGap="5.0" layoutX="399.0" layoutY="380.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="48.0" prefWidth="103.0" stylesheets="@style.css" text="Xóa" textFill="WHITE">
+               </graphic></Button>
+                <Button fx:id="changeButton2" graphicTextGap="5.0" layoutX="245.0" layoutY="383.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="39.0" prefWidth="103.0" stylesheets="@style.css" text="Xóa từ" textFill="WHITE">
                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../image/delete.png" />
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Text fx:id="engLabel" fill="RED" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="328.0">
+                <Text fx:id="engLabel" fill="#141414" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="306.0">
                     <font>
                         <Font size="20.0" />
                     </font></Text>
-                <Button fx:id="changeButton3" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="336.0" layoutY="12.0" mnemonicParsing="false" onAction="#speak" prefHeight="44.0" prefWidth="53.0" stylesheets="@style.css" textFill="#111010">
+                <Button fx:id="changeButton3" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="325.0" layoutY="8.0" mnemonicParsing="false" onAction="#speak" prefHeight="44.0" prefWidth="53.0" stylesheets="@style.css" textAlignment="RIGHT" textFill="#111010">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="27.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/voice.png" />
+                                <Image url="@../image/megaphone.png" />
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <ScrollPane layoutX="12.0" layoutY="61.0" prefHeight="312.0" prefWidth="490.0" style="-fx-padding: 16;">
+                <ScrollPane layoutX="12.0" layoutY="62.0" prefHeight="309.0" prefWidth="490.0" style="-fx-padding: 16;">
                     <content>
                         <Text fx:id="vieLabel" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="372.0">
                             <font>
@@ -90,7 +95,7 @@
                             </font></Text>
                     </content>
                 </ScrollPane>
-                <Button layoutX="184.0" layoutY="380.0" mnemonicParsing="false" onAction="#gotoTextTranslation" prefHeight="48.0" prefWidth="103.0" stylesheets="@style.css" text="Dịch">
+                <Button layoutX="359.0" layoutY="383.0" mnemonicParsing="false" onAction="#gotoTextTranslation" prefHeight="39.0" prefWidth="147.0" stylesheets="@style.css" text="Dịch Văn bản">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                             <image>

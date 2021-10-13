@@ -4,7 +4,7 @@
 }
 .list-cell{
     -fx-background-color: #74f1e7;
-    -fx-text-fill: #000bd9;
+    -fx-text-fill: #0866a9;
     -fx-font-size:15.0;
 }
 .list-cell:filled:hover {
@@ -18,16 +18,9 @@
 }
 .button:hover
 {
--fx-background-color : #460DE8;
--fx-text-fill: white;
+-fx-background-color : #afadad;
+
 }
-.button1{
--fx-background-color : #6a6dcc;
--fx-text-fill: white;
-}
-.button1:hover
-{
--fx-background-color : #B10DF4;
--fx-text-fill: white;
-}
+
+
 

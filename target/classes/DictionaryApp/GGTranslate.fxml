@@ -9,44 +9,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: #6a6dcc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.APITranslate">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApp.APITranslate">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="45.0" prefWidth="720.0" style="-fx-background-color: #0cf9e6;">
+      <AnchorPane layoutY="-1.0" prefHeight="48.0" prefWidth="607.0" style="-fx-background-color: #0866a9;">
          <children>
-            <Text fill="#000bd9" layoutX="221.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="278.13671875">
+            <Text fill="#fffffff7" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary Application" textAlignment="CENTER" wrappingWidth="720.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
+            <ImageView fitHeight="39.0" fitWidth="30.0" layoutX="484.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/dictionary.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <Button layoutY="44.0" mnemonicParsing="false" onAction="#goHome" prefHeight="47.0" prefWidth="99.0" styleClass="button1" stylesheets="@style.css" text="Back">
+      <Button layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#goHome" prefHeight="25.0" prefWidth="108.0" stylesheets="@style.css" text="Back">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/backk.png" />
+                  <Image url="@../image/back.png" />
                </image>
             </ImageView>
          </graphic>
          <font>
-            <Font size="19.0" />
+            <Font size="16.0" />
          </font></Button>
-      <Label layoutX="118.0" layoutY="41.0" prefHeight="52.0" prefWidth="242.0" text="Text Translation" textFill="WHITE">
+      <Label layoutX="144.0" layoutY="50.0" prefHeight="52.0" prefWidth="242.0" text="Dịch văn bản">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="80.0" layoutY="107.0" prefHeight="35.0" prefWidth="123.0" text="Văn bản :" textFill="WHITE">
+      <Label layoutX="57.0" layoutY="109.0" prefHeight="35.0" prefWidth="156.0" text="Văn bản :" textFill="#0a0a0a">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="80.0" layoutY="285.0" text="Bản dịch :" textFill="WHITE">
+      <Label layoutX="57.0" layoutY="287.0" prefHeight="35.0" prefWidth="156.0" text="Nghĩa :">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="429.0" layoutY="48.0" mnemonicParsing="false" onAction="#TTranslate" prefHeight="24.0" prefWidth="108.0" styleClass="button1" stylesheets="@style.css" text="Dịch">
+      <Button layoutX="306.0" layoutY="263.0" mnemonicParsing="false" onAction="#TTranslate" prefHeight="24.0" prefWidth="108.0" stylesheets="@style.css" text="Dịch">
+         <font>
+            <Font size="19.0" />
+         </font>
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,19 +62,16 @@
                </image>
             </ImageView>
          </graphic>
-         <font>
-            <Font size="19.0" />
-         </font>
       </Button>
-      <ScrollPane layoutX="74.0" layoutY="327.0" prefHeight="139.0" prefWidth="606.0">
+      <ScrollPane layoutX="57.0" layoutY="327.0" prefHeight="128.0" prefWidth="606.0" style="-fx-padding: 12px;">
          <content>
-            <Text fx:id="TextVie" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="601.205078125">
+            <Text fx:id="TextVie" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="571.205078125">
                <font>
                   <Font size="19.0" />
                </font></Text>
          </content>
       </ScrollPane>
-      <TextArea fx:id="TextEng" layoutX="74.0" layoutY="154.0" prefHeight="124.0" prefWidth="606.0" wrapText="true">
+      <TextArea fx:id="TextEng" layoutX="57.0" layoutY="144.0" prefHeight="108.0" prefWidth="606.0" wrapText="true">
          <font>
             <Font size="19.0" />
          </font>
