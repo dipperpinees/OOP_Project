@@ -20,14 +20,17 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button layoutY="44.0" mnemonicParsing="false" onAction="#goHome" prefHeight="45.0" prefWidth="97.0" styleClass="button1" stylesheets="@style.css" text="Back">
+      <Button layoutY="44.0" mnemonicParsing="false" onAction="#goHome" prefHeight="47.0" prefWidth="99.0" styleClass="button1" stylesheets="@style.css" text="Back">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/backk.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+         <font>
+            <Font size="19.0" />
+         </font></Button>
       <Label layoutX="118.0" layoutY="41.0" prefHeight="52.0" prefWidth="242.0" text="Text Translation" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -51,10 +54,13 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="19.0" />
+         </font>
       </Button>
       <ScrollPane layoutX="74.0" layoutY="327.0" prefHeight="139.0" prefWidth="606.0">
          <content>
-            <Text fx:id="TextVie" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="602.205078125">
+            <Text fx:id="TextVie" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="601.205078125">
                <font>
                   <Font size="19.0" />
                </font></Text>

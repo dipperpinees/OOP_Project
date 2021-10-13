@@ -1,4 +1,4 @@
-package Project;
+package DicCommandline;
 
 import java.util.ArrayList;
 import java.util.List;

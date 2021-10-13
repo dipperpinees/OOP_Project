@@ -1,12 +1,9 @@
 package DictionaryApp;
 
-import Project.*;
+import DicCommandline.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,16 +11,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -63,8 +56,7 @@ public class homeController implements Initializable {
         changeButton2.setVisible(false);
         changeButton3.setVisible(false);
         dic.insertTxt();
-        listEng = showAllWord();
-//        showAllWord();
+        listEng = getAllWord();
         listView.getItems().setAll(listEng);
 
         text.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -114,14 +106,7 @@ public class homeController implements Initializable {
         return newList;
     }
 
-//    public void addWordFile() {
-//        dic.insertFromFile();
-//        for (int i = 0; i<dic.getDictionnary().getWordsList().size(); i++) {
-//            listVie.add(dic.getDictionnary().getWordsList().get(i).getWordExplain());
-//        }
-//    }
-
-    public ArrayList<String> showAllWord() {
+    public ArrayList<String> getAllWord() {
         ArrayList<String> newList = new ArrayList<String>();
         for (int i = 0; i<dic.getDictionnary().getWordsList().size(); i++) {
             newList.add(dic.getDictionnary().getWordsList().get(i).getWordTarget());
@@ -207,12 +192,6 @@ public class homeController implements Initializable {
             ie.printStackTrace();
         }
     }
-
-//    public void playSound(String target) {
-//        Media sound = new Media("http://api.voicerss.org/?key=458d0ac0b00d4d5bb52175e4c1e7159c&hl=en-us&src=" + target);
-//        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-//        mediaPlayer.play();
-//    }
 
     public void speak(ActionEvent event) {
         String target = listView.getSelectionModel().getSelectedItem();
