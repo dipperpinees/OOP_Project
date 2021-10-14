@@ -56,7 +56,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button fx:id="changeButton" layoutX="132.0" layoutY="383.0" mnemonicParsing="false" onAction="#showInputTextDialog" prefHeight="39.0" prefWidth="103.0" stylesheets="@style.css" text="Sửa từ" textAlignment="CENTER" textFill="WHITE">
+                <Button fx:id="changeButton" layoutX="132.0" layoutY="383.0" mnemonicParsing="false" onAction="#changeExplain" prefHeight="39.0" prefWidth="103.0" stylesheets="@style.css" text="Sửa từ" textAlignment="CENTER" textFill="WHITE">
                <graphic>
                         <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -72,7 +72,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Text fx:id="engLabel" fill="#141414" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="306.0">
+                <Text fx:id="engLabel" fill="#0000ff" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="306.0">
                     <font>
                         <Font size="20.0" />
                     </font></Text>
