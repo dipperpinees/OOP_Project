@@ -32,11 +32,11 @@ public class homeController implements Initializable {
     private ListView<String> listView;
 
     @FXML
-    private Button changeButton = new Button();
+    private Button changeButton = new Button();     //button change explain
     @FXML
-    private Button changeButton2 = new Button();
+    private Button changeButton2 = new Button();    //button delete
     @FXML
-    private Button changeButton3 = new Button(); //button speak
+    private Button changeButton3 = new Button();    //button speak
 
     private ArrayList<String> listEng = new ArrayList<String>();
 
@@ -152,7 +152,7 @@ public class homeController implements Initializable {
         stage1.setScene(TransScene);
     }
 
-    public void showInputTextDialog() throws IOException  {
+    public void changeExplain() throws IOException  {
 
         TextInputDialog dialog = new TextInputDialog("");
 
@@ -163,6 +163,10 @@ public class homeController implements Initializable {
         Optional<String> result = dialog.showAndWait();
 
         result.ifPresent(name -> {
+            if (name == null || name.length() == 0) {
+                showAlert("Nghĩa mới không hợp lệ");
+                return;
+            }
             boolean check = dic.changeWordExplain(name, this.currentWord);
             vieLabel.setText(name);
             showAlert("Đổi nghĩa thành công");
