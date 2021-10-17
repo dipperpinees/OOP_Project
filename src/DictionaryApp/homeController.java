@@ -93,6 +93,7 @@ public class homeController implements Initializable {
         });
     }
 
+    /** Lấy nghĩa của từ. */
     public ArrayList<String> getExplain (String target) {
         ArrayList<String> newList = new ArrayList<String>();
         if(target == null || target.length() == 0) return newList;
@@ -106,6 +107,7 @@ public class homeController implements Initializable {
         return newList;
     }
 
+    /** Lấy tất cả từ trong file từ điển. */
     public ArrayList<String> getAllWord() {
         ArrayList<String> newList = new ArrayList<String>();
         for (int i = 0; i<dic.getDictionnary().getWordsList().size(); i++) {
@@ -114,6 +116,7 @@ public class homeController implements Initializable {
         return newList;
     }
 
+    /** Tìm kiếm từ. */
     public ArrayList<String> LookUpWord (String word) {
         ArrayList<String> listWord = new ArrayList<String>();
 
@@ -134,6 +137,7 @@ public class homeController implements Initializable {
         return listWord;
     }
 
+    /** Đổi sang scene thêm từ. */
     public void gotoAddWord(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("addWord.fxml"));
@@ -144,6 +148,7 @@ public class homeController implements Initializable {
         stage.setScene(AddScene);
     }
 
+    /** Đổi sang scene dịch. */
     public void gotoTextTranslation(ActionEvent event1) throws IOException {
         Stage stage1 = (Stage) ((Node) event1.getSource()).getScene().getWindow();
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("GGTranslate.fxml"));
@@ -152,6 +157,7 @@ public class homeController implements Initializable {
         stage1.setScene(TransScene);
     }
 
+    /** Thay đổi nghĩa. */
     public void changeExplain() throws IOException  {
 
         TextInputDialog dialog = new TextInputDialog("");
@@ -170,10 +176,12 @@ public class homeController implements Initializable {
             boolean check = dic.changeWordExplain(name, this.currentWord);
             vieLabel.setText(name);
             showAlert("Đổi nghĩa thành công");
-            try {
-                dic.dictionaryExportToFile();
-            } catch(IOException ie) {
-                ie.printStackTrace();
+            if (check) {
+                try {
+                    dic.dictionaryExportToFile();
+                } catch (IOException ie) {
+                    ie.printStackTrace();
+                }
             }
         });
     }
@@ -186,17 +194,21 @@ public class homeController implements Initializable {
         alert.showAndWait();
     }
 
+    /** Xóa từ. */
     public void deleteWord(ActionEvent e) throws IOException  {
         boolean check = dic.removeCurrentWord(currentWord);
         listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
         showAlert("xoá thành công");
-        try {
-            dic.dictionaryExportToFile();
-        } catch(IOException ie) {
-            ie.printStackTrace();
+        if (check) {
+            try {
+                dic.dictionaryExportToFile();
+            } catch (IOException ie) {
+                ie.printStackTrace();
+            }
         }
     }
 
+    /** Phát âm. */
     public void speak(ActionEvent event) {
         String target = listView.getSelectionModel().getSelectedItem();
         String targetRes = target.replace('-',' ');

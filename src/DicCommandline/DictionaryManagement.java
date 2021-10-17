@@ -122,6 +122,7 @@ public class DictionaryManagement {
 
     }
 
+    /** Nếu line chứa kí tự @ ở đầu theo định dạng thì lấy từ và phát âm. */
     private String getWord(String line) {
         if(line.indexOf('/') == -1) {
             return line;
@@ -129,6 +130,7 @@ public class DictionaryManagement {
         return line.substring(1, line.indexOf('/') - 1);
     }
 
+    /** lấy phát âm của từ. */
     private String getPronounce(String line) {
         if(line.indexOf('/') == -1) {
             return "";
@@ -136,6 +138,7 @@ public class DictionaryManagement {
         return line.substring(line.indexOf('/'));
     }
 
+    /** Nạp từ trong file vào listWord. */
     public void insertTxt() {
         String line;
         boolean check = false;
@@ -156,9 +159,9 @@ public class DictionaryManagement {
                 if(check && line.length() != 0) {
                     explain = explain.concat(line + "\n");
                 }
-                if(line.length() > 1 && line.charAt(0) == '@') {
-                    target = getWord(line);
-                    pronounce = getPronounce(line);
+                if(line.length() > 1 && line.charAt(0) == '@') {    // lấy phát âm và target nếu char[0] = @
+                    target = getWord(line);                         // lấy từ
+                    pronounce = getPronounce(line);                 // lấy phát âm
                     check = true;
                 }
             }
@@ -188,6 +191,7 @@ public class DictionaryManagement {
         }
     }
 
+    /** Nạp từ trong list vào file. */
     public void dictionaryExportToFile () throws IOException {
         File file = new File("src/AnhViet.txt");
         OutputStream outputStream = new FileOutputStream(file);
@@ -202,6 +206,7 @@ public class DictionaryManagement {
         outputStreamWriter.flush();
     }
 
+    /** Thay đổi nghĩa, trả về true nếu đổi thành công, false nếu k có từ đó. */
     public boolean changeWordExplain (String newExplain, String target) {
         for(int i = 0; i < dictionary.getWordsList().size(); i++) {
             if( dictionary.getWordsList().get(i).getWordTarget().equals(target)) {
@@ -212,6 +217,7 @@ public class DictionaryManagement {
         return false;
     }
 
+    /** Xóa từ trong list từ điển, trả về true nếu xóa thành công, false nếu k có từ đó. */
     public boolean removeCurrentWord(String wordRemove) {
         if(wordRemove == null) return false;
         for (int i = 0; i < dictionary.getWordsList().size(); i++) {
