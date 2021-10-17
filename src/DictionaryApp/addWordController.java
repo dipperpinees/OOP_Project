@@ -31,6 +31,7 @@ public class addWordController {
     }
 
 
+    /** quay lại scene home. */
     public void goHome(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
@@ -42,6 +43,7 @@ public class addWordController {
 
     }
 
+    /** Thêm từ vào list Word và file. */
     public void addWo(ActionEvent event) throws IOException {
         FileWriter fw = null;
         BufferedWriter bw = null;
