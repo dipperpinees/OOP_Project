@@ -7,7 +7,7 @@ public class VoiceGG {
     public Voice voice;
 
     public VoiceGG(String name) {
-        this.voice = VoiceManager.getInstance().getVoice("kevin16");
+        this.voice = VoiceManager.getInstance().getVoice(name);
         this.voice.allocate();
     }
 
