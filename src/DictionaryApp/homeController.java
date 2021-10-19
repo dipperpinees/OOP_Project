@@ -200,6 +200,7 @@ public class homeController implements Initializable {
         listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
         showAlert("xoá thành công");
         if (check) {
+            listEng = getAllWord();
             try {
                 dic.dictionaryExportToFile();
             } catch (IOException ie) {
